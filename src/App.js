@@ -7,14 +7,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 import './App.css';
 import { ItemListContainer } from './components/itemlist/index.jsx';
 import {NavBar} from './components/navbar/index.jsx'; 
-import {CartWidget} from './components/navbar/cartwidget.jsx';
+import {CartWidget} from './components/cartwidget/cartwidget.jsx';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
       <NavBar/> 
-      <ItemListContainer/> 
+      <ItemListContainer  user ={"usuario"} greeting={"Bienvenido a esta tienda!"}/> 
         <img src={logo} className="App-logo" alt="logo" />
         <p>
          Mi app <code>HEAVY DRINKING</code> de react js. 

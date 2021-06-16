@@ -1,7 +1,7 @@
  
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
-import { CartWidget } from './cartwidget.jsx'; 
+import { CartWidget } from '../cartwidget/cartwidget'; 
 import Logo from './beer.png' 
 
 export const NavBar = () => {
