@@ -19,14 +19,6 @@ function App() {
         <p>
          Mi app <code>HEAVY DRINKING</code> de react js. 
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
        
       </header>
      
