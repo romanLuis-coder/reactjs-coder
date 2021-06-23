@@ -5,9 +5,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import './App.css';
-import { ItemListContainer } from './components/itemlist/index.jsx';
-import {NavBar} from './components/navbar/index.jsx'; 
-import {CartWidget} from './components/cartwidget/cartwidget.jsx';
+import { ItemListContainer } from './components/ItemList';
+import {NavBar} from './components/NavBar'; 
+
+
 
 function App() {
   return (
@@ -27,3 +28,4 @@ function App() {
 }
 
 export default App;
+
