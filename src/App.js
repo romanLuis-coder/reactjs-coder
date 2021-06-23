@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import './App.css';
-import { ItemListContainer } from './components/ItemList';
+import { ItemListContainer } from './components/ItemListContainer';
 import {NavBar} from './components/NavBar'; 
 
 
