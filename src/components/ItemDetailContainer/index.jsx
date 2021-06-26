@@ -8,12 +8,13 @@ import {ItemDetail} from '../ItemDetail';
 export const ItemDetailContainer = ({greeting,user}) => {
 
 // Este agregado es para hacer el callback a la funcion de onAdd 
- /* const onAdd = (count) => {
-    alert(`Has agregado ${count} productos al carrito`)}*/
+const onAdd = (count) => {
+    alert(`Has agregado ${count} productos al carrito`)}
   
 // dentro de este componente debe ir la logica para llamar al fetch que traera el json 
 
 const [products,setProducts] = useState([]);
+const [flag,setflag] =useState(false);
 
 useEffect( ()=> {
   const apiFetch = async () => {    
@@ -21,6 +22,7 @@ useEffect( ()=> {
     const json = await response.json(); 
     setTimeout(() => {
       setProducts(json)
+      setflag(true)
     },2000);  
    
   }
@@ -32,7 +34,16 @@ return (
         <>
 
 <h1>¡Hola {user},{greeting}</h1>
-<ItemDetail products={products[0]}/> 
+
+{
+  flag ?
+  <ItemDetail products={products[0]} onAdd={onAdd}/> 
+:
+
+<div></div>
+}
+
+
 </>
     )
 };
