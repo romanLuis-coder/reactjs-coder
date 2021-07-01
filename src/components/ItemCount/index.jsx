@@ -32,3 +32,4 @@ function restar(){
   
 };
 
+export default ItemCount;
