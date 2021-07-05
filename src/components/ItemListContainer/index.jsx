@@ -1,41 +1,34 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
-import {ItemCount} from '../ItemCount';
 import {ItemList} from '../ItemList';
 import React, {useEffect,useState} from 'react';
-
+import { useParams } from 'react-router-dom';
 
 export const ItemListContainer = ({greeting,user}) => {
 
-// Este agregado es para hacer el callback a la funcion de onAdd 
-  const onAdd = (count) => {
-    alert(`Has agregado ${count} productos al carrito`)}
-  
-// dentro de este componente debe ir la logica para llamar al fetch que traera el json 
-
 const [products,setProducts] = useState([]);
+const {id} = useParams(); 
 
 useEffect( ()=> {
   const apiFetch = async () => {
-    const response = await fetch("./products/products.json");
+    const response = await fetch("/products/products.json");
     const json = await response.json(); 
-      setTimeout(() => {
-        setProducts(json)
-      }, 5000);
+    let aux = json.filter (element => element.category === id); 
 
-   
-   
+    setTimeout(() => {
+      setProducts(aux);  
+      console.log(aux);
+    })
+    
   }
   apiFetch();
-},[]);
+},[id]);
 
 
 return (
         <>
 
-<h1>¡Hola {user},{greeting}</h1>
-
-<ItemCount  onAdd={onAdd} stock={10} initial={1} item={"item"} />
+<h1>¡Hola,bienvenido a la tienda!</h1>
 <ItemList products= {products} />
 
 </>

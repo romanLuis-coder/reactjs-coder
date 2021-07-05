@@ -37,7 +37,7 @@ return (
 
 {
   flag ?
-  <ItemDetail products={products[0]} onAdd={onAdd}/> 
+  <ItemDetail products={products[0]} onAdd={onAdd} initial={1} stock={10}  /> 
 :
 
 <div></div>

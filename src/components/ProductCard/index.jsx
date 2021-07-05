@@ -1,21 +1,33 @@
+ import Card from 'react-bootstrap/Card'; 
+ import ListGroup from 'react-bootstrap/ListGroup';
+ import ListGroupItem from 'react-bootstrap/ListGroupItem';
+ import Container from 'react-bootstrap/Container';
+ import Row from 'react-bootstrap/Row'; 
+ import Col from 'react-bootstrap/Col';
 
-
-export const ProductCard = ({product})=> {
+export const ProductCard = ({products})=> {
 
     return(
-    <div className="card bg-dark mb-3" >
-        <div className="card-header">Producto {product.id}</div>
-        <div className="card-body">
-        <h5 className="card-title"> {product.name} </h5>
-        <h5 className="card-title"> {product.title} </h5>
-        <h5 className="card-title"> {product.price}  </h5>
-        <h5 className="card-title"> {product.description} </h5>
-        <h5 className="card-title"> {product.pictureUrl} </h5>
-        </div>
-    
-    </div>
+        <Container>
+        <Row >
+        <Col sm={4}>
+        <Card >
+            <Card.Img variant="top" src={products.pictureUrl} />
+            <Card.Body>
+            <Card.Title>{products.title}</Card.Title>
+            <Card.Text>
+            {products.description}    
+            </Card.Text>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+            <ListGroupItem>Producto {products.id} </ListGroupItem>
+            <ListGroupItem>Precio: {products.price} ARS</ListGroupItem>
+            </ListGroup>
+        </Card>
+        </Col >
+        </Row>
+    </Container>
     
     )
-    
-    
+       
     };

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 
@@ -6,24 +6,26 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 // components takes precedence over default styles.
 import './App.css';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
-import {NavBar} from './components/NavBar'; 
-
-
+import {NavBarComponent} from './components/NavBar'; 
+import {BrowserRouter,Switch,Route} from 'react-router-dom'; 
+import {ItemListContainer} from './components/ItemListContainer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <NavBar/> 
-      <ItemDetailContainer  user ={"usuario"} greeting={"Bienvenido a esta tienda!"}/> 
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Mi app <code>HEAVY DRINKING</code> de react js. 
-        </p>
+    <>
+    
+      <BrowserRouter>
+      <NavBarComponent/>
+      <Switch>
        
-      </header>
+      <Route exact path="/" component={ItemListContainer} />
+      <Route exact path="/category/id:" component={ItemListContainer} />
+      <Route exact path="/item/id:" component={ItemDetailContainer} />
+      </Switch>
+      </BrowserRouter>
      
-    </div>
+    
+    </>
   );
 }
 
