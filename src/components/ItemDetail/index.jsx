@@ -1,22 +1,35 @@
 import React from 'react';
-import whisky from './whisky.jpg';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ItemCount from '../ItemCount';
 
 
+const onAdd = (count) => {
+    alert(`Has agregado ${count} productos al carrito`)}
 
 export const ItemDetail = ({products}) => {
-
-console.log(products); 
+ 
 return (
     <>
-        <div className="card mb-3">
-            <img className="card-img-top" src={whisky} alt="producto whisky"></img>
-            <div className="card-body">
-            <h5 className="card-title"><small className="text-dark">{products.title}</small></h5>
-            <p className="card-text"><small className="text-dark">{products.description}</small></p>
-            <p className="card-text"><small className="text-dark">{products.price}</small></p>
-            </div>
-        </div> 
+    <Container >
+        <Row className="justify-content-md-center">
+        <Col xs={4}>
+        <Card>
+            <Card.Img variant="top" src={products.pictureUrl} />
+            <Card.Body>
+            <Card.Text>{products.title}</Card.Text>
+            <Card.Text>{products.description}</Card.Text>
+            <Card.Text> {products.price}</Card.Text>
+            <ItemCount onAdd={onAdd} initial={1} stock={10}  />  
+            </Card.Body>
+        </Card>
+        </Col>
+        </Row>
+    </Container>
     </>
 )
-}
+};
+
  export default ItemDetail; 

@@ -3,17 +3,18 @@
     {
         "id":1,
         "title":"Whisky",
-        "description":"Excelente producto",
+        "description":"Whisky escocés,single Malt",
         "price":5500,
-        "pictureUrl":34534
-
+        "pictureUrl": "https://media.revistagq.com/photos/5cd443a19d80fc82f1e32827/master/w_1600%2Cc_limit/mejor_whisky_escoces_629486973_1200x899.jpg",
+        "category":"destilados"
     },
     {
         "id":2,
         "title":"Rum",
-        "description":"Excelente producto",
+        "description":"Rum del caribe",
         "price":6000,
-        "pictureUrl":343
+        "pictureUrl":"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bestrum-index-1593022591.jpg?crop=0.5xw:1xh;center,top&resize=768:*",
+        "category": "destilados"
     },
 
     {
@@ -21,7 +22,8 @@
         "title":"Vodka",
         "description":"Excelente producto",
         "price":4500,
-        "pictureUrl":3434
+        "pictureUrl":"https://gatopardo.com/wp-content/uploads/2017/06/absolut-lime-int1.jpg",
+        "category":"destilados"
     },
 
     {
@@ -29,7 +31,8 @@
         "title":"Pale Ale",
         "description":"Excelente producto",
         "price":350,
-        "pictureUrl":3434
+        "pictureUrl":"https://www.beercoffee.com.ar/wp-content/uploads/2020/06/INDIA-PALE-ALE-600x600.jpg",
+        "category":"otros"
     },
 
     {
@@ -37,8 +40,10 @@
         "title":"Fernet",
         "description":"Excelente producto",
         "price":900,
-        "pictureUrl":3434
+        "pictureUrl":"https://www.vinoacasa.com/wp-content/uploads/2020/09/FERNET-BRANCA-1.jpg",
+        "category":"otros"
     }
 
     
 ]
+

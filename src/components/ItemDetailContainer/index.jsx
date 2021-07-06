@@ -1,9 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
-//import {ItemCount} from '../ItemCount';
-//import {ItemList} from '../ItemList';
 import React, {useEffect,useState} from 'react';
 import {ItemDetail} from '../ItemDetail';
+import {useParams} from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
 
 export const ItemDetailContainer = ({greeting,user}) => {
 
@@ -11,23 +9,27 @@ export const ItemDetailContainer = ({greeting,user}) => {
 const onAdd = (count) => {
     alert(`Has agregado ${count} productos al carrito`)}
   
-// dentro de este componente debe ir la logica para llamar al fetch que traera el json 
+// useParams
+const { id } = useParams(); 
 
-const [products,setProducts] = useState([]);
+const [item,setItem] = useState({});
 const [flag,setflag] =useState(false);
 
 useEffect( ()=> {
   const apiFetch = async () => {    
     const response = await fetch("./products/products.json");
     const json = await response.json(); 
+    let aux = json.find(element => element.id === parseInt(id)); 
+
+    
     setTimeout(() => {
-      setProducts(json)
+      setItem(aux)
       setflag(true)
     },2000);  
    
   }
   apiFetch();
-},[]);
+}, [id]);
 
 
 return (
@@ -37,10 +39,14 @@ return (
 
 {
   flag ?
-  <ItemDetail products={products[0]} onAdd={onAdd}/> 
+  <ItemDetail products={item} onAdd={onAdd} initial={1} stock={10}  /> 
 :
 
-<div></div>
+<div>
+<Spinner animation="border" role="status">
+  <span className="sr-only">Loading...</span>
+</Spinner>
+</div>
 }
 
 

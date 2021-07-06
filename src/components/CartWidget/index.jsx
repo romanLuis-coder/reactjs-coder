@@ -1,10 +1,14 @@
-import carrito from './shopping-cart.png'
+
+import Button from 'react-bootstrap/Button';
+import {MdLocalGroceryStore} from 'react-icons/md'
+
 export const CartWidget = () => {
 
     return (
 <div className="container">
-    <img src={carrito} className="img rounded bg-light" alt="shopping cart"></img>
+<Button variant="light"><MdLocalGroceryStore/> </Button>
 </div>
+
 
     )
 
