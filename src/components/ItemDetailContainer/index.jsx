@@ -17,7 +17,7 @@ const [flag,setflag] =useState(false);
 
 useEffect( ()=> {
   const apiFetch = async () => {    
-    const response = await fetch("./products/products.json");
+    const response = await fetch("/products/products.json");
     const json = await response.json(); 
     let aux = json.find(element => element.id === parseInt(id)); 
 

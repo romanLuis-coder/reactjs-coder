@@ -12,7 +12,7 @@ export const ProductCard = ({product})=> {
         <Container>
         <Row >
         <Col sm={4}>
-        <Link to ={`/${product.category}/${product.id}`}>
+        <Link to ={`/item/${product.id}`}>
         <Card >
             <Card.Img variant="top" src={product.pictureUrl} />
             <Card.Body>
