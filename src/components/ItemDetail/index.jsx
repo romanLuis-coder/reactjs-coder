@@ -4,13 +4,24 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ItemCount from '../ItemCount';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button'; 
+import {Link} from 'react-router-dom';
 
 
-const onAdd = (count) => {
-    alert(`Has agregado ${count} productos al carrito`)}
 
 export const ItemDetail = ({products}) => {
- 
+
+    const [confirm,setConfirm]= useState(false);
+
+    const onAdd = (count) => {
+    
+        alert(`Has agregado ${count} productos al carrito`);
+        setConfirm(true); 
+    }
+    
+
+
 return (
     <>
     <Container >
@@ -22,7 +33,11 @@ return (
             <Card.Text>{products.title}</Card.Text>
             <Card.Text>{products.description}</Card.Text>
             <Card.Text> {products.price}</Card.Text>
-            <ItemCount onAdd={onAdd} initial={1} stock={10}  />  
+
+            { !confirm ? <ItemCount onAdd={onAdd} initial={1} stock={10} /> : <Link to="/cart"><Button>Terminar compra</Button></Link>  }
+            
+
+
             </Card.Body>
         </Card>
         </Col>
@@ -33,3 +48,5 @@ return (
 };
 
  export default ItemDetail; 
+
+ 
