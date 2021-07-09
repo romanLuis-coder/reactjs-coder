@@ -3,11 +3,15 @@ import {ItemDetail} from '../ItemDetail';
 import {useParams} from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 
+
 export const ItemDetailContainer = ({greeting,user}) => {
 
 // Este agregado es para hacer el callback a la funcion de onAdd 
 const onAdd = (count) => {
-    alert(`Has agregado ${count} productos al carrito`)}
+    alert(`Has agregado ${count} productos al carrito`)
+  
+  }
+    
   
 // useParams
 const { id } = useParams(); 

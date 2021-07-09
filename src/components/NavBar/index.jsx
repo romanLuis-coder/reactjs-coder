@@ -1,8 +1,6 @@
  
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
 import { CartWidget } from '../CartWidget'; 
-import {Navbar,Nav,NavDropdown} from 'react-bootstrap';
+import {Navbar,Nav} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom'; 
 
 export const NavBarComponent = () => {
@@ -18,17 +16,10 @@ export const NavBarComponent = () => {
       <Nav.Link as={NavLink} activeClassName="active" to="/">Inicio</Nav.Link>
       <Nav.Link as={NavLink}   to="/category/destilados">Destilados</Nav.Link>
       <Nav.Link as={NavLink}   to="/category/otros">Otros</Nav.Link>
-      
-      <NavDropdown title="Mas Categorias" id="basic-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-      </NavDropdown>
     </Nav>
+  <Nav.Item>
     <CartWidget/>
-    
+  </Nav.Item>  
   </Navbar.Collapse>
   
 </Navbar>

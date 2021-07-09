@@ -1,14 +1,18 @@
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
+
+
 
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
-import './App.css';
+//import './App.css';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
 import {NavBarComponent} from './components/NavBar'; 
 import {BrowserRouter,Switch,Route} from 'react-router-dom'; 
 import {ItemListContainer} from './components/ItemListContainer';
+import {NotFound} from './components/NotFound';
 
 function App() {
   return (
@@ -20,6 +24,7 @@ function App() {
       <Route exact path="/" component={ItemListContainer} />
       <Route exact path="/category/:id" component={ItemListContainer} />
       <Route exact path="/item/:id" component={ItemDetailContainer} />
+      <Route path = '*' component={NotFound}/>
       </Switch>
       </BrowserRouter>
      

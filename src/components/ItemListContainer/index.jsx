@@ -1,8 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
 import {ItemList} from '../ItemList';
 import React, {useEffect,useState} from 'react';
 import { useParams } from 'react-router-dom';
+
 
 export const ItemListContainer = ({greeting,user}) => {
 
@@ -17,8 +16,7 @@ useEffect( ()=> {
     let aux = id ? json.filter (element => element.category === id) : json ;
 
     setTimeout(() => {
-      setProducts(aux);  
-      console.log(aux);
+      setProducts(aux);
     })
     
   }
@@ -29,9 +27,10 @@ useEffect( ()=> {
 return (
         <>
 
-<h1>¡Hola,bienvenido a la tienda!</h1>
-<ItemList products= {products} />
-
+    <h1>¡Hola,bienvenido a la tienda!</h1>
+ 
+      <ItemList products= {products} />
+    
 </>
     )
 };
