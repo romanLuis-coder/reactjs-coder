@@ -4,6 +4,8 @@ import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { Button,Row,Col,Container,Card, } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import {CartContext} from '../../context/CartContext';
+
 
 export const ItemDetail = ({products}) => {
 
