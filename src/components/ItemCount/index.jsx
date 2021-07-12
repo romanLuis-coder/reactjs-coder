@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import {Button,Container,Row,InputGroup,FormControl,Badge,Col} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 
-
-export const ItemCount = ({initial,stock,onAdd}) => {
+export const ItemCount = ({initial,stock,onAdd, products}) => {
     const [count, setCount] = useState(initial);
-    
+
+
+   
 
 function sumar() {
     if(count < stock){
@@ -45,7 +46,7 @@ function restar(){
             </Row>
             <Col>
                 <Row className="justify-content-md-center" >
-                <Button  onClick={()=>{onAdd(count)}}  > Agregar al carrito </Button> 
+                <Button  onClick={()=>{onAdd(count,products)}}  > Agregar al carrito </Button> 
                 </Row>
             </Col>
         </Container>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemCount from '../ItemCount';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import {Link} from 'react-router-dom';
 import { Button,Row,Col,Container,Card, } from 'react-bootstrap';
 import Swal from 'sweetalert2';
@@ -9,12 +9,19 @@ import {CartContext} from '../../context/CartContext';
 
 export const ItemDetail = ({products}) => {
 
+    //importar del context
+    const {addOnCart} = useContext(CartContext);
+
     const [confirm,setConfirm]= useState(false);
-    const onAdd = (count) => {
+    const onAdd = (count,products) => {
     
         Swal.fire(`Has agregado  ${count} productos al carrito`);
         setConfirm(true); 
+        addOnCart(products, count)
     }
+
+
+
 
 return (
     <>
