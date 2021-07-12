@@ -3,9 +3,9 @@
     {
         "id":1,
         "title":"Whisky",
-        "description":"Whisky escocés,single Malt",
+        "description":"Whisky de calidad",
         "price":5500,
-        "pictureUrl": "https://media.revistagq.com/photos/5cd443a19d80fc82f1e32827/master/w_1600%2Cc_limit/mejor_whisky_escoces_629486973_1200x899.jpg",
+        "pictureUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd-5ijTZdFMPyca5GoctGusGXx0zgbL8Shpw&usqp=CAU",
         "category":"destilados"
     },
     {
@@ -46,3 +46,4 @@
 
     
 ]
+

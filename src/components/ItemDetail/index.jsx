@@ -1,16 +1,28 @@
 import React from 'react';
-
-import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import ItemCount from '../ItemCount';
+import { useState,useContext } from 'react';
+import {Link} from 'react-router-dom';
+import { Button,Row,Col,Container,Card, } from 'react-bootstrap';
+import Swal from 'sweetalert2';
+import {CartContext} from '../../context/CartContext';
 
-const onAdd = (count) => {
-    alert(`Has agregado ${count} productos al carrito`)}
 
 export const ItemDetail = ({products}) => {
- 
+
+    //importar del context
+    const {addOnCart} = useContext(CartContext);
+
+    const [confirm,setConfirm]= useState(false);
+    const onAdd = (count,products) => {
+    
+        Swal.fire(`Has agregado  ${count} productos al carrito`);
+        setConfirm(true); 
+        addOnCart(products, count)
+    }
+
+
+
+
 return (
     <>
     <Container >
@@ -22,7 +34,7 @@ return (
             <Card.Text>{products.title}</Card.Text>
             <Card.Text>{products.description}</Card.Text>
             <Card.Text> {products.price}</Card.Text>
-            <ItemCount onAdd={onAdd} initial={1} stock={10}  />  
+            { !confirm ? <ItemCount onAdd={onAdd} initial={1} stock={10} /> : <Link to="/cart"><Button>Terminar compra</Button></Link>  }
             </Card.Body>
         </Card>
         </Col>
@@ -32,4 +44,6 @@ return (
 )
 };
 
- export default ItemDetail; 
+export default ItemDetail; 
+
+ 

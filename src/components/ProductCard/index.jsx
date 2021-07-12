@@ -1,33 +1,23 @@
- import Card from 'react-bootstrap/Card'; 
- import ListGroup from 'react-bootstrap/ListGroup';
- import ListGroupItem from 'react-bootstrap/ListGroupItem';
- import Container from 'react-bootstrap/Container';
- import Row from 'react-bootstrap/Row'; 
- import Col from 'react-bootstrap/Col';
+import {ListGroup,Card,ListGroupItem} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
-export const ProductCard = ({products})=> {
+export const ProductCard = ({product})=> {
 
-    return(
-        <Container>
-        <Row >
-        <Col sm={4}>
-        <Card >
-            <Card.Img variant="top" src={products.pictureUrl} />
-            <Card.Body>
-            <Card.Title>{products.title}</Card.Title>
+    return(        
+        <Card className="mb-2 p-4">
+            <Link to ={`/item/${product.id}`}>
+            <Card.Img variant="top" src={product.pictureUrl} className="mt-2"/>
+            </Link>
+            <Card.Body className="pt-2">
+            <Card.Title>{product.title}</Card.Title>
             <Card.Text>
-            {products.description}    
+            {product.description}    
             </Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-            <ListGroupItem>Producto {products.id} </ListGroupItem>
-            <ListGroupItem>Precio: {products.price} ARS</ListGroupItem>
+            <ListGroupItem>Producto {product.id} </ListGroupItem>
+            <ListGroupItem>Precio: {product.price} ARS</ListGroupItem>
             </ListGroup>
         </Card>
-        </Col >
-        </Row>
-    </Container>
-    
     )
-       
     };

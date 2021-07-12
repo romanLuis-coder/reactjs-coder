@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import {Button,Container,Row,InputGroup,FormControl,Badge,Col} from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
-
-export const ItemCount = ({initial,item,stock,onAdd}) => {
+export const ItemCount = ({initial,stock,onAdd, products}) => {
     const [count, setCount] = useState(initial);
-    
+
+
+   
 
 function sumar() {
     if(count < stock){
@@ -15,19 +18,38 @@ function restar(){
     if(count >1){
         setCount (count -1); 
 }else{
-    alert("La cantidad debe ser mayor a 1 item!");
+    Swal.fire('¡La mínima cantidad es 1 item!');
 }
 };
 
     return(
-        <div className="container">
-            <button onClick={sumar}>+</button>
-            <button onClick={restar}>-</button>
-            <p>Item:{item}</p>
-            <p>Stock:{stock}</p>
-            <p>{count}</p>
-            <button onClick={()=>{onAdd(count)}}  >Agregar al carrito</button>
-        </div>
+        <Container>
+            <Row >
+            <InputGroup className="mb-2 pr-2">
+              <InputGroup.Prepend>
+                <Button onClick={restar} variant="outline-primary">
+                  -
+                </Button>
+              </InputGroup.Prepend>
+              <FormControl value={count}/>
+              <InputGroup.Append>
+                <Button onClick={sumar} variant="outline-primary">
+                  +
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+            </Row>
+            <Row className="justify-content-md-center p-2" >
+                <Badge pill variant="primary">
+                    Stock {stock}
+                </Badge>
+            </Row>
+            <Col>
+                <Row className="justify-content-md-center" >
+                <Button  onClick={()=>{onAdd(count,products)}}  > Agregar al carrito </Button> 
+                </Row>
+            </Col>
+        </Container>
     )
   
 };
