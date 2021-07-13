@@ -11,9 +11,8 @@ import { CartProvider } from './context/CartContext';
 function App() {
   return (
     <>
-    
+    <CartProvider>
       <BrowserRouter>
-      <CartProvider>
       <NavBarComponent/>
       <Switch>
       <Route exact path="/" component={ItemListContainer} />
@@ -21,10 +20,8 @@ function App() {
       <Route exact path="/item/:id" component={ItemDetailContainer} />
       <Route path = '*' component={NotFound}/>
       </Switch>
-      </CartProvider>
       </BrowserRouter>
-     
-    
+      </CartProvider> 
     </>
   );
 }

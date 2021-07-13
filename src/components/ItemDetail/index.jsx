@@ -13,14 +13,14 @@ export const ItemDetail = ({products}) => {
     const {addOnCart} = useContext(CartContext);
 
     const [confirm,setConfirm]= useState(false);
-    const onAdd = (count,products) => {
+
+    const onAdd = (count) => {
     
         Swal.fire(`Has agregado  ${count} productos al carrito`);
         setConfirm(true); 
+        console.log(products)
         addOnCart(products, count)
     }
-
-
 
 
 return (
