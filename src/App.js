@@ -15,13 +15,13 @@ function App() {
       <BrowserRouter>
       <NavBarComponent/>
       <Switch>
-      <Route exact path="/" component={ItemListContainer} />
-      <Route exact path="/category/:id" component={ItemListContainer} />
-      <Route exact path="/item/:id" component={ItemDetailContainer} />
-      <Route path = '*' component={NotFound}/>
+        <Route exact path="/" component={ItemListContainer} />
+        <Route exact path="/category/:id" component={ItemListContainer} />
+        <Route exact path="/item/:id" component={ItemDetailContainer} />
+        <Route path = '*' component={NotFound}/>
       </Switch>
       </BrowserRouter>
-      </CartProvider> 
+    </CartProvider> 
     </>
   );
 }

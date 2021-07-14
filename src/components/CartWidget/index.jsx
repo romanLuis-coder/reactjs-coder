@@ -6,7 +6,7 @@ export const CartWidget = () => {
 
     return (
 <div className="container">
-<Button variant="light"><MdLocalGroceryStore/> </Button>
+    <Button variant="light"><MdLocalGroceryStore/> </Button>
 </div>
 
 

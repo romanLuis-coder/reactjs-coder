@@ -5,7 +5,7 @@ import {CartContext} from '../../context/CartContext';
 
 export const ItemListContainer = ({greeting,user}) => {
 
-const ContextValue = useContext(CartContext); 
+const {ContextValue} = useContext(CartContext); 
 
 const [products,setProducts] = useState([]);
 const {id} = useParams(); 

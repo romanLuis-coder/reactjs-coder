@@ -5,6 +5,7 @@ export const CartContext = createContext([]);
 
 export const CartProvider = ({children}) => {
 
+// Value mockeado para ver el estado del context
 const ContextValue = "Helloooo context";
 
 const [cart, setCart] = useState({ cantidadTotal: 0, data: [] });
@@ -19,24 +20,24 @@ const cartPrice = () => {
 }
 
 
-const addOnCart = (producto, counter) => {
-    if(cart.data.find( ident => ident.id === producto.id)){
-        const IndiceProducto = cart.data.findIndex( item => item.id === producto.id)
-        cart.data[IndiceProducto].data.quantity = cart.data[IndiceProducto].data.quantity + counter
+const addOnCart = (products, count) => {
+    if(cart.data.find( ident => ident.id === products.id)){
+        const IndiceProducto = cart.data.findIndex( item => item.id === products.id)
+        cart.data[IndiceProducto].data.quantity = cart.data[IndiceProducto].data.quantity + count
         setCart({...cart,
             cantidadTotal: cartLength()
         })
     } else{
-        // producto.data.quantity = counter
+        products.data.quantity = count
         setCart({...cart,
-            cantidadTotal: cartLength() + counter,
-            data: [...cart.data, producto]
+            cantidadTotal: cartLength() + count,
+            data: [...cart.data, products]
         })
     }
 }
 
-const changeQty = (producto, signo) => {
-    const IndiceProducto = cart.data.findIndex( item => item.id === producto.id)
+const changeQty = (products, signo) => {
+    const IndiceProducto = cart.data.findIndex( item => item.id === products.id)
     cart.data[IndiceProducto].data.quantity = signo === "-" ? cart.data[IndiceProducto].data.quantity - 1 : cart.data[IndiceProducto].data.quantity + 1;
     setCart({...cart,
         cantidadTotal: cartLength()})
@@ -49,10 +50,10 @@ const dropCart = () => {
     });
 }
 
-const deleteItem = (producto) => {
-    console.log(producto)
-    const IndiceProducto = cart.data.findIndex( item => item.id === producto.id)
-    const datoId = cart.data.filter( ident => ident.id !== producto.id)
+const deleteItem = (products) => {
+    console.log(products)
+    const IndiceProducto = cart.data.findIndex( item => item.id === products.id)
+    const datoId = cart.data.filter( ident => ident.id !== products.id)
     setCart({...cart, 
      cantidadTotal: cartLength() - cart.data[IndiceProducto].data.quantity,
      data: datoId})
@@ -62,7 +63,7 @@ const deleteItem = (producto) => {
 
 
 
-return  <CartContext.Provider value={{cart,setCart,deleteItem,dropCart,changeQty,addOnCart,cartPrice,cartLength}} > {children} </CartContext.Provider>
+return  <CartContext.Provider value={{cart,setCart,deleteItem,dropCart,changeQty,addOnCart,cartPrice,cartLength,ContextValue}} > {children} </CartContext.Provider>
 
 
 }; 
