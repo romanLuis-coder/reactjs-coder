@@ -9,8 +9,8 @@ import {CartContext} from '../../context/CartContext';
 
 export const ItemDetail = ({products}) => {
 
-    //importar del context
-    const {addOnCart} = useContext(CartContext);
+    //importar del context el metdo addItem
+    const {addItem} = useContext(CartContext);
 
     const [confirm,setConfirm]= useState(false);
 
@@ -19,7 +19,7 @@ export const ItemDetail = ({products}) => {
         Swal.fire(`Has agregado  ${count} productos al carrito`);
         setConfirm(true); 
         console.log(products)
-        addOnCart(products, count)
+        addItem(products, count)
     }
 
 
