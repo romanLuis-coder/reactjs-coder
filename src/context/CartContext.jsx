@@ -30,7 +30,7 @@ const [cart, setCart] = useState([]);
     }
     //Verifica si Existe en el carrito, devuelve false/true
     const isInCart =(id) =>{
-        return cart.some(element => element.item.id == id)
+        return cart.some(element => element.item.id === id)
     }
     //Devuelve la posición en el cart
     const posInCart =(id) =>{
