@@ -1,11 +1,11 @@
 import {ItemList} from '../ItemList';
-import React, {useEffect,useState,useContext} from 'react';
+import React, {useEffect,useState} from 'react';
 import { useParams } from 'react-router-dom';
-import {CartContext} from '../../context/CartContext';
+
 
 export const ItemListContainer = ({greeting,user}) => {
 
-const {ContextValue} = useContext(CartContext); 
+ 
 
 const [products,setProducts] = useState([]);
 const {id} = useParams(); 
@@ -29,7 +29,7 @@ useEffect( ()=> {
 return (
         <>
 
-    <h1>¡Hola,bienvenido a la tienda! {ContextValue} </h1>
+    <h1>¡Hola,bienvenido a la tienda!  </h1>
  
       <ItemList products= {products} />
     
