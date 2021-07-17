@@ -5,8 +5,7 @@ export const CartContext = createContext([]);
 
 export const CartProvider = ({defaultValue=[],children}) => {
 
-// Value mockeado para ver el estado del context
-const ContextValue = "Helloooo context";
+
 
 const [cart, setCart] = useState([]);
     //agregar cierta cantidad de un ítem al carrito
@@ -28,9 +27,10 @@ const [cart, setCart] = useState([]);
         cartAux[posUpdate].quantity+=quantity
         setCart(cartAux)
     }
+
     //Verifica si Existe en el carrito, devuelve false/true
     const isInCart =(id) =>{
-        return cart.some(element => element.item.id == id)
+        return cart.some(element => element.item.id === id)
     }
     //Devuelve la posición en el cart
     const posInCart =(id) =>{
@@ -49,7 +49,7 @@ const [cart, setCart] = useState([]);
     }
 
 
-return  <CartContext.Provider value={{cart,setCart,ContextValue,addItem, removeItem, clear}} > {children} </CartContext.Provider>
+return  <CartContext.Provider value={{cart,setCart,addItem, removeItem, clear}} > {children} </CartContext.Provider>
 
 
 }; 
