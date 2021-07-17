@@ -6,7 +6,18 @@ import Button from 'react-bootstrap/Button';
 export const Cart = () => {
 
 const {cart,removeItem,clear} = useContext(CartContext);
-console.log(cart);
+
+
+// Para definir el total del carrito
+
+const TotalCart = () => {
+    let total = 0;
+    for (const element of cart) {
+        total += element.item.price * element.quantity;
+    }
+    return total;
+}; 
+
 
 
 const EmptyCart = () => {
@@ -41,13 +52,25 @@ return(
                                 <p>Cantidad: {element.quantity}</p>
                                 <p>Precio por unidad: <strong>$ {element.item.price} </strong></p>
                                 <p>Precio total: <strong>${element.item.price * element.quantity}</strong></p>
-                                <button onClick={() => removeItem(element.item.id)}>Eliminar </button>
+                                <Button  onClick={() => removeItem()}>Eliminar</Button>
                             </div>
                         </li>
                     ))
                 }
             </ul>
             <div >
+                <div>
+                        <h2> 
+                           
+                                Total: $<p>{TotalCart()}</p>
+                        </h2>
+
+                </div>
+
+
+
+
+
             <button  onClick={() => clear()}>Vaciar carrito</button>
             </div>
         </section>
