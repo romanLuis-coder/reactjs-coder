@@ -46,15 +46,18 @@ const [cart, setCart] = useState([]);
     }
     //Devuelve la posición en el cart
     const posInCart =(id) =>{
-        return cart.findIndex(element=>element.item.id = id)
+        return cart.findIndex(element=>element.item.id === id)
     }
+
     //Remover un item del cart por usando su id
     const removeItem = (itemId) => {
-        let posRemove = posInCart(itemId)
-        let cartAux = cart
-        cartAux.slice(posRemove,1)
+        let cartAux = [...cart];
+        console.log(cartAux);
+        cartAux = cartAux.filter(element=> element.item.id !== itemId);
+        console.log(cartAux);
         setCart(cartAux)
     }
+    
     //Vacio el carrito
     const clear = () =>{
         setCart([])

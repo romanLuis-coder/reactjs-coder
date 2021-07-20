@@ -8,6 +8,7 @@ export const Cart = () => {
 const {cart,removeItem,clear} = useContext(CartContext);
 
 
+
 // Para definir el total del carrito
 
 const TotalCart = () => {
@@ -52,7 +53,7 @@ return(
                                 <p>Cantidad: {element.quantity}</p>
                                 <p>Precio por unidad: <strong>$ {element.item.price} </strong></p>
                                 <p>Precio total: <strong>${element.item.price * element.quantity}</strong></p>
-                                <Button  onClick={() => removeItem()}>Eliminar</Button>
+                                <Button  onClick={() => removeItem(element.item.id)}>Eliminar</Button>
                             </div>
                         </li>
                     ))
