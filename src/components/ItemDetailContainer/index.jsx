@@ -2,7 +2,7 @@ import React, {useEffect,useState} from 'react';
 import {ItemDetail} from '../ItemDetail';
 import {useParams} from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
-
+import { getFirestore } from '../../firebase/client';
 
 export const ItemDetailContainer = ({greeting,user}) => {
 
@@ -11,7 +11,7 @@ const onAdd = (count) => {
     alert(`Has agregado ${count} productos al carrito`)
   
   }
-    
+  
   
 // useParams
 const { id } = useParams(); 
@@ -19,6 +19,7 @@ const { id } = useParams();
 const [item,setItem] = useState({});
 const [flag,setflag] =useState(false);
 
+/*
 useEffect( ()=> {
   const apiFetch = async () => {    
     const response = await fetch("/products/products.json");
@@ -34,6 +35,28 @@ useEffect( ()=> {
   }
   apiFetch();
 }, [id]);
+*/
+
+// modifico la llamada a json local por implementacion de Firebase
+useEffect( ()=> {
+  async function getData(){
+    const db = getFirestore();
+    const COLLECTION = db.collection("products");
+    const RESPONSE = await COLLECTION.get();
+    const p = RESPONSE.docs.map(element => element.data())
+    console.log(p)
+
+    let aux = p.find(element => element.id === parseInt(id)); 
+
+
+    setItem(aux); 
+    console.log(aux)
+    setflag(true)
+  }
+getData();
+  
+},[id]);
+
 
 
 return (

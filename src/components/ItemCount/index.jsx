@@ -3,10 +3,7 @@ import {Button,Container,Row,InputGroup,FormControl,Badge,Col} from 'react-boots
 import Swal from 'sweetalert2';
 
 export const ItemCount = ({initial,stock,onAdd, products}) => {
-    const [count, setCount] = useState(initial);
-
-
-   
+    const [count, setCount] = useState(initial);  
 
 function sumar() {
     if(count < stock){

@@ -1,70 +1,70 @@
 import React from 'react'; 
 import { createContext,useState} from 'react';
 
-export const CartContext = createContext(); 
+export const CartContext = createContext([]); 
 
-export const CartProvider = ({children}) => {
-
-const ContextValue = "Helloooo context";
-
-const [cart, setCart] = useState({
-    cantidadTotal: 0,
-    data: []
-});
-
-const cartLength = () => {
-    return cart.data.reduce((accumulator, currentValue) => { return accumulator + currentValue.data.quantity}, 0);
-}
-
-const cartPrice = () => {
-    return cart.data.reduce((accumulator, currentValue) => { return accumulator + currentValue.data.quantity * currentValue.data.price}, 0);
-}
+export const CartProvider = ({defaultValue=[],children}) => {
 
 
-const addOnCart = (producto, counter) => {
-    if(cart.data.find( ident => ident.id === producto.id)){
-        const IndiceProducto = cart.data.findIndex( item => item.id === producto.id)
-        cart.data[IndiceProducto].data.quantity = cart.data[IndiceProducto].data.quantity + counter
-        setCart({...cart,
-            cantidadTotal: cartLength()
-        })
-    } else{
-        producto.data.quantity = counter
-        setCart({...cart,
-            cantidadTotal: cartLength() + counter,
-            data: [...cart.data, producto]
-        })
+
+const [cart, setCart] = useState([]);
+    //agregar cierta cantidad de un ítem al carrito
+    const addItem = (item, quantity) => {
+        if(cart.length === 0){
+            setCart([{item: item,quantity: quantity}])            
+        } else {            
+            isInCart(item.id)?
+            updateCart(item.id,quantity)            
+            :
+            setCart([...cart,{item: item,quantity: quantity}])
+        }
+        
     }
-}
 
-const changeQty = (producto, signo) => {
-    const IndiceProducto = cart.data.findIndex( item => item.id === producto.id)
-    cart.data[IndiceProducto].data.quantity = signo === "-" ? cart.data[IndiceProducto].data.quantity - 1 : cart.data[IndiceProducto].data.quantity + 1;
-    setCart({...cart,
-        cantidadTotal: cartLength()})
-}
+    //Total carrito
 
-const dropCart = () => {
-    setCart ({
-        cantidadTotal: 0,
-        data: []
-    });
-}
+    const sizeCart = () =>{
+        let size = 0;
+        for (const element of cart){
+            size += element.quantity;
+        }
+        return size;
+    }
 
-const deleteItem = (producto) => {
-    console.log(producto)
-    const IndiceProducto = cart.data.findIndex( item => item.id === producto.id)
-    const datoId = cart.data.filter( ident => ident.id !== producto.id)
-    setCart({...cart, 
-     cantidadTotal: cartLength() - cart.data[IndiceProducto].data.quantity,
-     data: datoId})
- }
+    //Modifico la cantidad
+    const updateCart = (id,quantity) =>{
+         let posUpdate = posInCart(id)
+         let cartAux = cart         
+        cartAux[posUpdate].quantity+=quantity
+        setCart(cartAux)
+        
+    }
+
+    //Verifica si Existe en el carrito, devuelve false/true
+    const isInCart =(id) =>{
+        return cart.some(element => element.item.id === id)
+    }
+    //Devuelve la posición en el cart
+    const posInCart =(id) =>{
+        return cart.findIndex(element=>element.item.id === id)
+    }
+
+    //Remover un item del cart por usando su id
+    const removeItem = (itemId) => {
+        let cartAux = [...cart];
+        console.log(cartAux);
+        cartAux = cartAux.filter(element=> element.item.id !== itemId);
+        console.log(cartAux);
+        setCart(cartAux)
+    }
+    
+    //Vacio el carrito
+    const clear = () =>{
+        setCart([])
+    }
 
 
-
-
-
-return  <CartContext.Provider value={{ContextValue,setCart,cart,addOnCart, cartLength, cartPrice, dropCart, deleteItem, changeQty}} > {children} </CartContext.Provider>
+return  <CartContext.Provider value={{cart,setCart,addItem, removeItem, clear,updateCart,sizeCart}} > {children} </CartContext.Provider>
 
 
 }; 
