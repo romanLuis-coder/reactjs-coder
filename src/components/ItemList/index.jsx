@@ -6,7 +6,7 @@ export const ItemList = ({products})=> {
 return(
     <>
     <Row>
-        {products.map(product=> {   
+        {products.map(product => {   
            return  <Col lg={4}><ProductCard product={product} /></Col>
             })
         }
@@ -14,3 +14,6 @@ return(
 </>
 )
 };
+
+
+
