@@ -8,12 +8,13 @@ import Swal from 'sweetalert2';
 export const Cart = () => {
 
 const {cart,removeItem,clear} = useContext(CartContext);
+
 //Agregado de los datos del cliente.
 
-const [name,setName]=useState('');
-const [lastName,setLastName] = useState('');
-const [phone,setPhone] = useState('');
-const [email,setEmail] = useState('');
+const [name,setName]=useState("");
+const [lastName,setLastName] = useState("");
+const [phone,setPhone] = useState("");
+const [email,setEmail] = useState("");
 
 //Definir una funcion para generar ordenes
 
@@ -32,6 +33,8 @@ db.collection("orders").add(order).then(response => {
 }; 
 
 
+
+
 // Para definir el total del carrito
 const TotalCart = () => {
     let total = 0;
@@ -40,6 +43,7 @@ const TotalCart = () => {
     }
     return total;
 }; 
+
 
 
 
@@ -86,10 +90,10 @@ return(
             <Container>
                 <Row className="justify-content-md-center"> <h2 >Datos del comprador</h2> </Row>
                     <Row>
-                    <Col lg={3}><input type="text" placeholder="Nombre" onInput={event => setName(event.target.value)}></input></Col>
-                    <Col lg={3}><input type="text" placeholder="Apellido" onInput={event => setLastName(event.target.value)}></input></Col>
-                    <Col lg={3}> <input type="tel" placeholder="Telefono" onInput={event => setPhone(event.target.value)}></input></Col>
-                    <Col lg={3}> <input type="email" required placeholder="E-mail"  onInput={event => setEmail(event.target.value)}></input></Col>
+                    <Col lg={3}><input type="text" placeholder="Nombre" controlId="checkoutForm.name" onInput={event => setName(event.target.value)}></input></Col>
+                    <Col lg={3}><input type="text" placeholder="Apellido" controlId="checkoutForm.last" onInput={event => setLastName(event.target.value)}></input></Col>
+                    <Col lg={3}> <input type="tel" placeholder="Telefono" controlId="checkoutForm.email" onInput={event => setPhone(event.target.value)}></input></Col>
+                    <Col lg={3}> <input type="email" required placeholder="E-mail" controlId="checkoutForm.telephone"  onInput={event => setEmail(event.target.value)}></input></Col>
                     </Row> 
             </Container>  
             <Container >

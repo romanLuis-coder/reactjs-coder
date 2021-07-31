@@ -8,22 +8,24 @@ import {ItemListContainer} from './components/ItemListContainer';
 import {NotFound} from './components/NotFound';
 import {CartProvider } from './context/CartContext';
 import { Cart } from './components/Cart';
-
+import { ProductProvider } from './context/ProductContext';
 
 function App() {
   return (
     <>
     <CartProvider>
+      <ProductProvider>
       <BrowserRouter>
       <NavBarComponent/>
-      <Switch>
-        <Route exact path="/" component={ItemListContainer} />
-        <Route exact path="/category/:id" component={ItemListContainer} />
-        <Route exact path="/item/:id" component={ItemDetailContainer} />
-        <Route exact path="/cart" component={Cart}/>
-        <Route path = '*' component={NotFound}/>
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={ItemListContainer} />
+          <Route exact path="/category/:id" component={ItemListContainer} />
+          <Route exact path="/item/:id" component={ItemDetailContainer} />
+          <Route exact path="/cart" component={Cart}/>
+          <Route path = '*' component={NotFound}/>
+        </Switch>
       </BrowserRouter>
+      </ProductProvider>
     </CartProvider> 
     </>
   );

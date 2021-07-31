@@ -5,10 +5,9 @@ export const CartContext = createContext([]);
 
 export const CartProvider = ({defaultValue=[],children}) => {
 
-
-
 const [cart, setCart] = useState([]);
-    //agregar cierta cantidad de un ítem al carrito
+
+//agregar cierta cantidad de un ítem al carrito
     const addItem = (item, quantity) => {
         if(cart.length === 0){
             setCart([{item: item,quantity: quantity}])            
@@ -31,7 +30,7 @@ const [cart, setCart] = useState([]);
         return size;
     }
 
-    //Modifico la cantidad
+    //Para actualizar el cart 
     const updateCart = (id,quantity) =>{
          let posUpdate = posInCart(id)
          let cartAux = cart         
@@ -58,7 +57,7 @@ const [cart, setCart] = useState([]);
         setCart(cartAux)
     }
     
-    //Vacio el carrito
+    //Vaci el carrito
     const clear = () =>{
         setCart([])
     }
