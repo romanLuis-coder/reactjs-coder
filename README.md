@@ -6,6 +6,8 @@ Hasta ahora hemos desarrollado este proyecto siguiendo el enfoque de componentes
 
 Contenedores y de presentacion. 
 
+En este proyecto integré tambien diferentes librerias y recursos para mejorar la interactividad y estilos como: React-Boostrap, React-icons,sweet alert,Bootstrap entre otros. 
+
 En mi caso estoy construyendo un ecommerce basado en bebidas alcoholicas
 
 ----------------------------------------------------------------------------
