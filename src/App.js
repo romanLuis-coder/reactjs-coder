@@ -8,7 +8,7 @@ import {ItemListContainer} from './components/ItemListContainer';
 import {NotFound} from './components/NotFound';
 import {CartProvider } from './context/CartContext';
 import { Cart } from './components/Cart';
-
+import {Checkout} from './components/Checkout'; 
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         <Route exact path="/category/:id" component={ItemListContainer} />
         <Route exact path="/item/:id" component={ItemDetailContainer} />
         <Route exact path="/cart" component={Cart}/>
+        <Route exact path="/checkout" component={Checkout}/>
         <Route path = '*' component={NotFound}/>
       </Switch>
       </BrowserRouter>

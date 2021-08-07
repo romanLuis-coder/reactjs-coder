@@ -1,56 +1,42 @@
-import {ItemList} from '../ItemList';
-import React, {useEffect,useState} from 'react';
-import { useParams } from 'react-router-dom';
-import {getFirestore} from "../../firebase/client";
+import { ItemList } from "../ItemList";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getFirestore } from "../../firebase/client";
+import { Container, Row, Col } from "react-bootstrap";
 
-export const ItemListContainer = ({greeting,user}) => {
+export const ItemListContainer = ({ greeting, user }) => {
+  const [products, setProducts] = useState([]);
+  const { id } = useParams();
 
-const [products,setProducts] = useState([]);
-const {id} = useParams(); 
+  // Modifico la llamada a json local por implementacion de Firebase
 
-/*useEffect( ()=> {
-  const apiFetch = async () => {
-    const response = await fetch("/products/products.json");
-    const json = await response.json();
-
-    let aux = id ? json.filter (element => element.category === id) : json ;
-
-    setTimeout(() => {
+  useEffect(() => {
+    async function getData() {
+      const db = getFirestore();
+      const COLLECTION = db.collection("products");
+      const RESPONSE = await COLLECTION.get();
+      const p = RESPONSE.docs.map((element) => element.data());
+      let aux = id ? p.filter((element) => element.category === id) : p;
       setProducts(aux);
-    })
-    
-  }
-  apiFetch();
-},[id]);*/
+    }
+    getData();
+  }, [id]);
 
-
-// modifico la llamada a json local por implementacion de Firebase
-useEffect( ()=> {
-  async function getData(){
-    const db = getFirestore();
-    const COLLECTION = db.collection("products");
-    const RESPONSE = await COLLECTION.get();
-    const p = RESPONSE.docs.map(element => element.data())
-    console.log(p)
-
-    let aux = id ? p.filter(element => element.category === id) : p; 
-    setProducts(aux); 
-    console.log(aux)
-  }
-getData();
-  
-},[id]);
-
-return (
-        <>
-
-    <h1>¡Hola,bienvenido a la tienda!  </h1>
- 
-      <ItemList products= {products} />
-    
-</>
-    )
+  return (
+    <>
+      <Container >
+        <Row>
+          <Col>
+            <h1
+              className="display-4 text-center fw-bold rounded-pill"
+              style={{ backgroundColor: "none" }}
+            >
+              ¡Bienvenido a Heavy Drinking!{" "}
+            </h1>
+          </Col>
+        </Row>
+      </Container>
+      <ItemList products={products} />
+    </>
+  );
 };
-
-
-

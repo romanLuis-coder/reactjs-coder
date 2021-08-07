@@ -1,16 +1,19 @@
 import { ProductCard } from "../ProductCard";
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col,Container} from 'react-bootstrap';
+
 
 export const ItemList = ({products})=> {
 
 return(
     <>
+    <Container>
     <Row>
         {products.map(product => {   
-           return  <Col lg={4}><ProductCard product={product} /></Col>
+           return  <Col lg={3}><ProductCard product={product} /></Col>
             })
         }
     </Row>
+    </Container>
 </>
 )
 };
